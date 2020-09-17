@@ -3,10 +3,11 @@ import math
 
 def lecture_fichier_pdb(file_name):
     with open(file_name,"r") as file:
+        num_atom={}
         liste_atoms=[]
         dico_atoms={}
         for ligne in file:
-            if ligne.startswith("ATOM"):
+            if ligne.startswith("ATOM") and ligne[12:16].strip() in ["H","H1","H2","H3","O","N","C"]:
                 dico_coord={  #Dictionnaire de coordonnees
                 "x": float(ligne[30:38].strip()), 
                 "y": float(ligne[38:46].strip()), 
@@ -15,7 +16,7 @@ def lecture_fichier_pdb(file_name):
                 dico_atoms[ligne[12:16].strip()] = dico_coord #Dictionnaire de dictionnaire 
                 #Dictionnaire avec les atomes et pour chaque atome : dictionnaire de coordonnees
                 dico_coord={}
-
+                
                 liste_atoms.append(dico_atoms)
                 dico_atoms={}
 
@@ -34,7 +35,7 @@ def calc_dist_3D(A,B):
 #carbonyle (C=O) et q2 de +0,20e et - 0,20e sur l'hydrogène et l'azote de l'amide (NH),
 
 
-def calc_Energie():
+def calc_Energie(A,B):
     Q1_CO=0.42
     Q2_NH=-0.20
     
@@ -42,5 +43,5 @@ def calc_Energie():
 
 
 
-c=lecture_fichier_pdb("3cev.pdb")
+c=lecture_fichier_pdb("1cfc.pdb")
 print(c)
