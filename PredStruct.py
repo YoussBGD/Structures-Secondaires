@@ -53,7 +53,6 @@ def coord_un_res(data_frame,num_res):
     else:
         i=4*(num_res-1) #pour trouver le numéro de ligne d'un atome on fait (numero du résidu-1)*4 
                   #(2 c'est les 3H du residu n ter -1 car on commence a 0 )
-    #print(i,num_res,data_frame["N° resid"][i])
     while data_frame["N° resid"][i]==num_res:
 
         dic_coord={  #Dictionnaire de coordonnees
@@ -82,7 +81,7 @@ def coord_un_res(data_frame,num_res):
 
 def calc_Energie(A,B):
     Q1_CO=0.42
-    Q2_NH=-0.20
+    Q2_NH=0.20
     if("H" in B.keys()):
         E=Q1_CO*Q2_NH*((1/dist_3D(B["N"],A["O"]))+(1/dist_3D(B["H"],A["C"]))-(1/dist_3D(B["H"],A["O"]))-(1/dist_3D(B["N"],A["C"])))*332
     else:
@@ -92,25 +91,34 @@ def calc_Energie(A,B):
             E=Q1_CO*Q2_NH*((1/dist_3D(B["N"],A["O"]))+(1/dist_3D(B["HA"],A["C"]))-(1/dist_3D(B["HA"],A["O"]))-(1/dist_3D(B["N"],A["C"])))*332
     return E
 
+def calc_mat(data_frame):
+    truc=int(len(data_frame)/4)
 
-def helices_3_10(A,B):
-    res=[50]
-    
-
-
+    mat_energy = np.zeros((truc,truc))
+    for x in range(truc):
+        for y in range(truc):
+            A= coord_un_res(data_frame,x)
+            B= coord_un_res(data_frame,y)
+            E=calc_Energie(A,B)
+            mat_energy[x][y]=E
+    return mat_energy
 
 
 c=lecture_fich_pdb("1cfc.pdb")
 #print(c["residu"][14780:14800])
 
-print(c[168:180])
+print(c)
+cc=coord_un_res(c,4)
+print(cc)
 
+print(len(c)/4)
 for i in range(1,140):
-    y=i+3
+    y=i+4
     atm1=coord_un_res(c,i)
     atm2=coord_un_res(c,y)
     E=calc_Energie(atm1,atm2)
-    if E<-0.3:
-        print('atm1 : {} atm2 : {} energie = {}'.format(i,y,E))
+    if E<-0.4:
+        print('res1 : {} | res2 : {} | energie = {}'.format(i,y,E))
 
 
+k=calc_mat(c)
