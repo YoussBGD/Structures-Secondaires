@@ -91,17 +91,22 @@ def calc_Energie(A,B):
             E=Q1_CO*Q2_NH*((1/dist_3D(B["N"],A["O"]))+(1/dist_3D(B["HA"],A["C"]))-(1/dist_3D(B["HA"],A["O"]))-(1/dist_3D(B["N"],A["C"])))*332
     return E
 
-def calc_mat(data_frame):
-    truc=int(len(data_frame)/4)
-
-    mat_energy = np.zeros((truc,truc))
-    for x in range(truc):
-        for y in range(truc):
-            A= coord_un_res(data_frame,x)
-            B= coord_un_res(data_frame,y)
-            E=calc_Energie(A,B)
-            mat_energy[x][y]=E
-    return mat_energy
+def calc_beta(data_frame,alpha):
+    #truc=int(len(data_frame)/4)
+    pont=[]
+    list_beta=[]
+    truc=141
+    for x in range(1,truc):
+        for y in range(1,truc):
+            if([x,y] not in alpha and [y,x] not in alpha and abs(x-y)>10):
+                A= coord_un_res(data_frame,x)
+                B= coord_un_res(data_frame,y)
+                E=calc_Energie(A,B)
+                if(E<-0.5):
+                    pont=[x,y,E]
+                    list_beta.append(pont)
+                pont=[]
+    return list_beta
 
 
 c=lecture_fich_pdb("1cfc.pdb")
@@ -112,13 +117,23 @@ cc=coord_un_res(c,4)
 print(cc)
 
 print(len(c)/4)
+
+
+alpha=[]
+res=[]
 for i in range(1,140):
+
     y=i+4
     atm1=coord_un_res(c,i)
     atm2=coord_un_res(c,y)
     E=calc_Energie(atm1,atm2)
-    if E<-0.4:
+    if E<-0.5:
         print('res1 : {} | res2 : {} | energie = {}'.format(i,y,E))
+        res=[i,y]
+        alpha.append(res)
+        res=[]
+print(alpha)
 
 
-k=calc_mat(c)
+k=calc_beta(c,alpha)
+print(k)
