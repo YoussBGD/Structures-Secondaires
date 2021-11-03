@@ -8,6 +8,7 @@
   dynamique moléculaire ( doit être sous format pdb).
 
 - Notre projet est séparé en 4 fichiers python, ces fichiers se trouvent dans le dossier nommé "scripts":
+- 
   1- Un fichier nommé DSSP_functions contenant toutes les fonctions qui calculent et assignent les structures secondaire.
 
   2- Un fichier nommé Draw_ss.py qui contient une fonction permettant d'afficher sous forme de flèches les feuillets 
