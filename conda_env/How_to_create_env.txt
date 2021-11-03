@@ -1,0 +1,15 @@
+If conda is not installed, follow the installation tutorial below:
+
+https://python.sdv.univ-paris-diderot.fr/annexe_install_python/
+
+
+
+After installing conda :
+Write the following lines to install and activate the conda environment
+containing all required packages :
+
+conda update conda
+
+conda env create -f DSSP_M2ISDD.yml
+
+conda activate DSSP_M2ISDD
