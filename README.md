@@ -37,24 +37,24 @@ Lancement du programme:
     Les informations suivantes s'afficheront sur votre terminal:
 
             ##############################################################################################
-	    #   Optional arguments:                                                                             #
-	    # 	  -h, --help :   show this help message and exit                                                #
-      #                                                                                                   #
-	    # 	  -m MODEL, --model MODEL : Model number (for RMN structure) - Default = 1                      #  
-	    #   	        	                                                                                    # 
-	    #	  -c CHAIN, --chain CHAIN : Chain number to analyze - Default = A                                 #
-	    #			                                                                                              #
-	    #	  -d, --downloadPDB :    Download file from PDB - Default = False                                 #
-      #                                                                                                   #
-	    #	  -nh, --no_addH     :       Use ambertools reduce to add H - Default = True                      #
-      #                                                                                                   #
-	    #	  -p, --plotSS   :       Secondary structure plot - Default = False                               # 
-	    #			                                                                                              #
-	    #	  -trj, --DSSP_Trajectory : Do DSSP on a trajectory (on PDB file) - Default = False               #
-	    #	                                                                                                  #
-      #           -stat,--statistiques :To calculate statistics of Secondary structures (on PDB file)     #
-      #                                - Default = False		                                              #
-	    #			                                                                                              #
+	    #   Optional arguments:                                                                      #
+	    # 	  -h, --help :   show this help message and exit                                         #
+            #                                                                                            #
+	    # 	  -m MODEL, --model MODEL : Model number (for RMN structure) - Default = 1               #  
+	    #   	        	                                                                 # 
+	    #	  -c CHAIN, --chain CHAIN : Chain number to analyze - Default = A                        #
+	    #			                                                                         #
+	    #	  -d, --downloadPDB :    Download file from PDB - Default = False                        #
+            #                                                                                            #
+	    #	  -nh, --no_addH     :       Use ambertools reduce to add H - Default = True             #
+            #                                                                                            #
+	    #	  -p, --plotSS   :       Secondary structure plot - Default = False                      # 
+	    #			                                                                         #
+	    #	  -trj, --DSSP_Trajectory : Do DSSP on a trajectory (on PDB file) - Default = False      #
+	    #	                                                                                         #
+            #     -stat,--statistiques :To calculate statistics of Secondary structures (on PDB file)    #
+            #                           - Default = False		                                 #
+	    #			                                                                         #
             ##############################################################################################
 
  
