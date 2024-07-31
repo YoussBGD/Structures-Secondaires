@@ -1,14 +1,14 @@
 
 
 
-- Ce programme assigne des structures secondaires à des protéines en se basant sur les coordonnéeS des 
+- Ce programme assigne des structures secondaires à des protéines en se basant sur les coordonnées des 
   atomes présentes dans des fichiers pdb avec la méthode DSSP.
 
 - Ce programme fonctionne sur un seul fichier pdb (sur une seule frame ) ou sur une tajectoire de 
   dynamique moléculaire ( doit être sous format pdb).
 
 - Notre projet est séparé en 4 fichiers python, ces fichiers se trouvent dans le dossier nommé "scripts":
-- 
+  
   1- Un fichier nommé DSSP_functions contenant toutes les fonctions qui calculent et assignent les structures secondaire.
 
   2- Un fichier nommé Draw_ss.py qui contient une fonction permettant d'afficher sous forme de flèches les feuillets 
